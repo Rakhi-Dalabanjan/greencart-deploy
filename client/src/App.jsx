@@ -20,6 +20,7 @@ import Loading from './components/Loading';
 import DeliveryLogin from './pages/delivery/DeliveryLogin';
 import DeliveryDashboard from './components/delivery/DeliveryDashboard';
 import Login from './components/Login';
+import Contact from './pages/Contact';
 
 
 const App = () => {

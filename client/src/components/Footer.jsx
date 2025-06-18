@@ -1,4 +1,5 @@
 import { assets, footerLinks } from "../assets/assets";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
 
@@ -8,8 +9,10 @@ const Footer = () => {
                 <div>
                     <img className="w-34 md:w-32" src={assets.logo} alt="logo" />
                     <p className="max-w-[410px] mt-6">
-                        We deliver fresh groceries and snacks straight to your door. Trusted by thousands, we aim to make your shopping experience simple and affordable.</p>
+                        We deliver fresh groceries and snacks straight to your door. Trusted by thousands, we aim to make your shopping experience simple and affordable.
+                    </p>
                 </div>
+
                 <div className="flex flex-wrap justify-between w-full md:w-[45%] gap-5">
                     {footerLinks.map((section, index) => (
                         <div key={index}>
@@ -17,7 +20,15 @@ const Footer = () => {
                             <ul className="text-sm space-y-1">
                                 {section.links.map((link, i) => (
                                     <li key={i}>
-                                        <a href={link.url} className="hover:underline transition">{link.text}</a>
+                                        {link.url.startsWith("http") ? (
+                                            <a href={link.url} target="_blank" rel="noopener noreferrer" className="hover:underline transition">
+                                                {link.text}
+                                            </a>
+                                        ) : (
+                                            <Link to={link.url} className="hover:underline transition">
+                                                {link.text}
+                                            </Link>
+                                        )}
                                     </li>
                                 ))}
                             </ul>
@@ -25,11 +36,12 @@ const Footer = () => {
                     ))}
                 </div>
             </div>
+
             <p className="py-4 text-center text-sm md:text-base text-gray-500/80">
-                Copyright {new Date().getFullYear()} © GreatStack.dev All Right Reserved.
+                Copyright {new Date().getFullYear()} © rakhidalabanjan All Right Reserved.
             </p>
         </div>
     );
 };
 
-export default Footer
+export default Footer;
